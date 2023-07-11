@@ -21,9 +21,12 @@ import AboutUs from "./pages/UI/AboutUs";
 import DoctorInfo from "./pages/UI/DoctorInfo";
 import Tests from "./pages/UI/Tests";
 import Testslist from "./pages/Admin/Testslist";
+import AllAppoinments from "./pages/Admin/AllAppoinments";
 import TestAppointments from "./pages/DashBoard/TestAppointments";
 import ForgotPass_1 from "./pages/Login & Registor/ForgotPass_1";
 import ForgotPass_2 from "./pages/Login & Registor/ForgotPass_2";
+
+
 
 
 function App() {
@@ -52,6 +55,7 @@ function App() {
         <Route path="/admin/userslist" element={<ProtectedRoute><Userslist /> </ProtectedRoute> } />
         <Route path="/admin/doctorslist" element={<ProtectedRoute><DoctorsList /></ProtectedRoute> } />
         <Route path="/admin/testslist" element={<ProtectedRoute><Testslist /></ProtectedRoute> } />
+        <Route path="/admin/allappoinments" element={<ProtectedRoute><AllAppoinments /></ProtectedRoute> } />
         <Route path="/doctor/profile/:userId" element={<ProtectedRoute><Profile /></ProtectedRoute> } />
         <Route path="/book-appointment/:doctorId" element={<ProtectedRoute><BookAppointment /></ProtectedRoute> } />
         <Route path="/appointments" element={<ProtectedRoute> <DocAppointments /></ProtectedRoute> } />

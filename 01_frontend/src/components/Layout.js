@@ -4,14 +4,8 @@ import "../CSS/Navbars/DashboardNavbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Badge } from "antd";
-import PullToRefresh from "react-simple-pull-to-refresh";
 
 function Layout({ children }) {
-
-  const handleRefresh = () =>{
-    window.location.reload(true);
-  }
-
   // destructring the user
   const { user } = useSelector((state) => state.user);
   //importing navigate hook
@@ -109,10 +103,15 @@ function Layout({ children }) {
       icon: "M16 1C16.5523 1 17 1.44772 17 2V5H21C21.5523 5 22 5.44772 22 6V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V6C2 5.44772 2.44772 5 3 5H7V2C7 1.44772 7.44772 1 8 1H16ZM20 7H4V19H20V7ZM13 9V12H16V14H12.999L13 17H11L10.999 14H8V12H11V9H13ZM15 3H9V5H15V3Z",
     },
     {
-      name: "Test list",
+      name: "Test appointment",
       path: "/admin/testslist",
       icon: "M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z",
     },
+    {
+      name: "Doctors appointment",
+      path: "/admin/allappoinments",
+      icon: "M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z",
+    }
   ];
 
   const menuToBeRendered = user?.isAdmin? adminMenu: user?.isDoctor? doctorMenu: userMenu;
@@ -120,7 +119,6 @@ function Layout({ children }) {
   const role = user?.isAdmin ? "Admin" : user?.isDoctor ? "Doctor" : "User";
 
   return (
-    <PullToRefresh onRefresh={handleRefresh}>
     <div className="main">
       <div className="d-flex layout">
         {/* This is side Bar start */}
@@ -188,7 +186,6 @@ function Layout({ children }) {
         </div>
       </div>
     </div>
-    </PullToRefresh>
   );
 }
 
