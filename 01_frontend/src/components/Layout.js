@@ -4,6 +4,7 @@ import "../CSS/Navbars/DashboardNavbar.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Badge } from "antd";
+import PullToRefresh from 'react-simple-pull-to-refresh';
 
 function Layout({ children }) {
   // destructring the user
@@ -119,7 +120,8 @@ function Layout({ children }) {
   const role = user?.isAdmin ? "Admin" : user?.isDoctor ? "Doctor" : "User";
 
   return (
-    <div className="main">
+    <PullToRefresh onRefresh={() => {window.location.reload(true);}}>
+      <div className="main">
       <div className="d-flex layout">
         {/* This is side Bar start */}
 
@@ -185,7 +187,9 @@ function Layout({ children }) {
           <div className="body flex-wrap" >{children}</div>
         </div>
       </div>
-    </div>
+     </div>
+    </PullToRefresh>
+    
   );
 }
 
